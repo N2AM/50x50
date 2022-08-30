@@ -8,7 +8,7 @@ Run `npm run dev` for a dev server. Navigate to `http://127.0.0.1:5173/`. The ap
 Run `npm run test:unit` to execute the unit tests via [Jest](https://jestjs.io/).
 
 # End-to-end tests
-Run `npm run test:e2e` to execute the unit tests via [Cypress](https://docs.cypress.io/).
+Run `npm run test:e2e` to execute the e2e tests via [Cypress](https://docs.cypress.io/).
 
 # Component tests
-Run `npm run test:component` to execute the unit tests via [Cypress](https://docs.cypress.io/).
+Run `npm run test:component` to execute the component tests via [Cypress](https://docs.cypress.io/).
