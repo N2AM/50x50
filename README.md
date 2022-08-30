@@ -1,5 +1,5 @@
 # 50x50
-This project was generated with Vue 3 and TypeScript in Vite.
+This project was generated with [Vue 3](https://vuejs.org/) and [TypeScript](https://www.typescriptlang.org/) in [Vite](https://vitejs.dev/).
 
 # Development server
 Run `npm run dev` for a dev server. Navigate to `http://127.0.0.1:5173/`. The application will automatically reload if you change any of the source files.
