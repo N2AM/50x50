@@ -1,14 +1,34 @@
 # 50x50
-This project was generated with [Vue 3](https://vuejs.org/) and [TypeScript](https://www.typescriptlang.org/) in [Vite](https://vitejs.dev/).
 
-# Development server
-Run `npm run dev` for a dev server. Navigate to `http://127.0.0.1:5173/`. The application will automatically reload if you change any of the source files.
+## Project setup
+```
+yarn install
+```
 
-# Unit tests
-Run `npm run test:unit` to execute unit tests via [Jest](https://jestjs.io/).
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
 
-# End-to-end tests
-Run `npm run test:e2e` to execute e2e tests via [Cypress](https://docs.cypress.io/).
+### Compiles and minifies for production
+```
+yarn build
+```
 
-# Component tests
-Run `npm run test:component` to execute component tests via [Cypress](https://docs.cypress.io/).
+### Run your unit tests
+```
+yarn test:unit
+```
+
+### Run your end-to-end tests
+```
+yarn test:e2e
+```
+
+### Lints and fixes files
+```
+yarn lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
