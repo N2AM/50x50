@@ -54,7 +54,9 @@ const increment = (cell: Cell) => {
       return {
         ...elm,
         value: elm.value++,
-        yellow: setTimeout(() => !elm.yellow, 5000),
+        yellow:
+          ((elm.yellow = true),
+          setTimeout(() => ((elm.yellow = false), 100000))),
       };
     });
   checkFibonacci(cells);
@@ -94,7 +96,6 @@ const checkFibonacci = (cells: Cell[]) => {
   text-align: center;
 }
 .grid {
-  width: 1100px;
   display: grid;
   grid-template-columns: repeat(50, 1fr);
   margin: auto;
