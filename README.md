@@ -25,6 +25,11 @@ yarn test:unit
 yarn test:e2e
 ```
 
+### Run your component tests
+```
+yarn test:e2e
+```
+
 ### Lints and fixes files
 ```
 yarn lint
