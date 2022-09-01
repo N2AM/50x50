@@ -55,8 +55,7 @@ const increment = (cell: Cell) => {
         ...elm,
         value: elm.value++,
         yellow:
-          ((elm.yellow = true),
-          setTimeout(() => ((elm.yellow = false), 100000))),
+          ((elm.yellow = true), setTimeout(() => ((elm.yellow = false), 5000))),
       };
     });
   checkFibonacci(cells);
