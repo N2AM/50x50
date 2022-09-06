@@ -2,7 +2,7 @@
   <h1 class="header">Hello 50x50</h1>
   <div class="grid">
     <div
-      v-for="cell in cells"
+      v-for="cell in displayedCells"
       :key="'' + cell.positionR + cell.positionC"
       :id="'' + cell.positionR + cell.positionC"
     >
@@ -20,12 +20,13 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "@vue/reactivity";
 import { ref } from "vue";
 import { Cell } from "../models/cell.model";
 
 let cells = ref<Cell[]>([]);
 
-const init = () => {
+const displayedCells = computed((): Cell[] => {
   for (let r = 1; r <= 50; r++) {
     for (let c = 1; c <= 50; c++) {
       let positionR = "r" + r;
@@ -39,8 +40,8 @@ const init = () => {
       });
     }
   }
-};
-init();
+  return cells.value;
+});
 
 const increment = (cell: Cell) => {
   let cellRow = cell.positionR;
