@@ -2,18 +2,18 @@
   <h1 class="header">Hello 50x50</h1>
   <div class="grid">
     <div
-      v-for="cell in cells"
-      :key="'' + cell.positionR + cell.positionC"
-      :id="'' + cell.positionR + cell.positionC"
+      v-for="position in displayedCells"
+      :key="'' + position.positionR + position.positionC"
+      :id="'' + position.positionR + position.positionC"
     >
       <button
-        :class="{ yellow: cell.yellow, green: cell.green }"
+        :class="{ yellow: position.yellow, green: position.green }"
         class="cell"
         type="button"
-        :id="'btn-' + cell.positionR + cell.positionC"
-        @click="increment(cell)"
+        :id="'btn-' + position.positionR + position.positionC"
+        @click="increment(position)"
       >
-        {{ cell.value }}
+        {{ position.value }}
       </button>
     </div>
   </div>
@@ -23,42 +23,57 @@
 import { reactive } from "vue";
 import { Cell } from "../models/cell.model";
 
-let cells: Cell[] = reactive([]);
+let cells = reactive(new Map());
+let displayedCells: any = reactive([]);
 
 const init = () => {
   for (let r = 1; r <= 50; r++) {
     for (let c = 1; c <= 50; c++) {
       let positionR = "r" + r;
       let positionC = "c" + c;
-      cells.push({
-        positionR: positionR,
-        positionC: positionC,
-        value: 0,
-        yellow: false,
-        green: false,
-      });
+      cells.set(
+        { positionR: positionR, positionC: positionC },
+        {
+          positionR: positionR,
+          positionC: positionC,
+          value: 0,
+          yellow: false,
+          green: false,
+        }
+      );
     }
   }
+  displayedCells = [...cells.values()];
+  console.log(
+    [...cells.keys()],
+    cells.get([...cells.keys()][0]),
+    cells.has([...cells.keys()][0])
+  );
 };
 init();
 
 const increment = (cell: Cell) => {
   let cellRow = cell.positionR;
   let cellColumn = cell.positionC;
-  cells
-    .filter(
-      (elem: Cell) =>
-        elem.positionR === cellRow || elem.positionC === cellColumn
-    )
-    .map((elm: Cell) => {
-      return {
-        ...elm,
-        value: elm.value++,
-        yellow:
-          ((elm.yellow = true), setTimeout(() => ((elm.yellow = false), 5000))),
-      };
-    });
-  checkFibonacci(cells);
+  cells.set(
+    (elem: Cell) => elem.positionR === cellRow || elem.positionC === cellColumn,
+    {
+      positionR: cell.positionR,
+      positionC: cell.positionC,
+      value: cell.value++,
+      yellow:
+        ((cell.yellow = true), setTimeout(() => ((cell.yellow = false), 5000))),
+    }
+  );
+  // .map((elm: Cell) => {
+  //   return {
+  //     ...elm,
+  //     value: elm.value++,
+  //     yellow:
+  //       ((elm.yellow = true), setTimeout(() => ((elm.yellow = false), 5000))),
+  //   };
+  // });
+  // checkFibonacci(cells);
 };
 
 const checkFibonacci = (cells: Cell[]) => {
