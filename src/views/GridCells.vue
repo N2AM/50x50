@@ -20,17 +20,17 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { ref } from "vue";
 import { Cell } from "../models/cell.model";
 
-let cells: Cell[] = reactive([]);
+let cells = ref<Cell[]>([]);
 
 const init = () => {
   for (let r = 1; r <= 50; r++) {
     for (let c = 1; c <= 50; c++) {
       let positionR = "r" + r;
       let positionC = "c" + c;
-      cells.push({
+      cells.value.push({
         positionR: positionR,
         positionC: positionC,
         value: 0,
@@ -45,7 +45,7 @@ init();
 const increment = (cell: Cell) => {
   let cellRow = cell.positionR;
   let cellColumn = cell.positionC;
-  cells
+  cells.value
     .filter(
       (elem: Cell) =>
         elem.positionR === cellRow || elem.positionC === cellColumn
@@ -58,7 +58,7 @@ const increment = (cell: Cell) => {
           ((elm.yellow = true), setTimeout(() => ((elm.yellow = false), 5000))),
       };
     });
-  checkFibonacci(cells);
+  checkFibonacci(cells.value);
 };
 
 const checkFibonacci = (cells: Cell[]) => {
